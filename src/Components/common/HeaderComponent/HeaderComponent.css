@@ -1,0 +1,20 @@
+.header{
+    background-color: black;
+    display: flex;
+    justify-content: center;
+}
+.header__container{
+    width: 1440px;
+    height: 100%;
+}
+.header__img{
+    display: flex;
+    align-self: center;
+    width: 45px;
+    height: 45px;
+}
+.header__title{
+    color: white;
+    font-size: 25px;
+    text-transform: capitalize;
+}

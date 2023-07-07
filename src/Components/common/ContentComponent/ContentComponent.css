@@ -1,0 +1,12 @@
+.content{
+    height: 100vh;
+    display: flex;
+    background-color: teal;
+}
+.content__container{
+    margin: 0 auto;
+    width: 1440px;
+    display: flex;
+    justify-content: center;
+
+}

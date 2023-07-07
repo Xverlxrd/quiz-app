@@ -1,7 +1,6 @@
 const path = require('path')
 const HTMLWebpackPlugin = require('html-webpack-plugin')
 const {CleanWebpackPlugin} = require('clean-webpack-plugin')
-const CopyWebPackPlugin = require('copy-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const isDev = process.env.NODE_ENV === 'development'
@@ -55,7 +54,7 @@ module.exports = {
         }),
         new CleanWebpackPlugin(),
         new MiniCssExtractPlugin({
-            filename: '[name].[contenthash].js'
+            filename: '[name].[contenthash].css'
         })
     ],
     module: {
@@ -67,7 +66,7 @@ module.exports = {
                 }, 'css-loader' ]
             },
             {
-                test: /\.(png|jpg|svg|gif)$/, //Для поддержки картинок и импортов
+                test: /\.(png|jpg|svg|gif)$/,
                 use: [ 'file-loader' ]
             },
             {
@@ -96,6 +95,14 @@ module.exports = {
                 use: {
                     loader: 'babel-loader',
                     options: babelOptions( '@babel/preset-typescript')
+                }
+            },
+            {
+                test: /\.tsx$/,
+                exclude: /node_modules/,
+                use: {
+                    loader: 'babel-loader',
+                    options: babelOptions('@babel/preset-typescript')
                 }
             },
             {
