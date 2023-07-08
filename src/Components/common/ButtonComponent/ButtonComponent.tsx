@@ -1,7 +1,7 @@
-import React, {FC} from 'react';
-import {Button} from 'antd';
+import React, { FC } from 'react';
+import { Button } from 'antd';
 import './ButtonComponent.css'
-import {ButtonComponentProps} from '@/Components/common/ButtonComponent/ButtonComponentProps';
+import { ButtonComponentProps } from '@/Components/common/ButtonComponent/ButtonComponentProps';
 
 const ButtonComponent:FC<ButtonComponentProps> = ({text, onClick}) => {
     return (

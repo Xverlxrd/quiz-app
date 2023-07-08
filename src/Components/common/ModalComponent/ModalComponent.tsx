@@ -1,6 +1,6 @@
-import React, {FC} from 'react';
+import React, { FC } from 'react';
 import './ModalComponent.css'
-import {ModalComponentProps} from '@/Components/common/ModalComponent/ModalComponentProps';
+import { ModalComponentProps } from '@/Components/common/ModalComponent/ModalComponentProps';
 
 const ModalComponent:FC<ModalComponentProps> = ({active, setActive, children}) => {
     return (

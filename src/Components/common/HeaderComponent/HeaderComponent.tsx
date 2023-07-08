@@ -1,10 +1,10 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { Header } from 'antd/lib/layout/layout';
 import './HeaderComponent.css';
-import { Space} from 'antd';
+import { Space } from 'antd';
 import { Icon } from '@iconify/react';
 
-const HeaderComponent = () => {
+const HeaderComponent:FC = () => {
     return (
         <Header className='header'>
             <Space className='header__container' align='center' size='large'>

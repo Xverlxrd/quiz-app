@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { FC, useState } from 'react';
 import { Space, Pagination } from 'antd';
 import './GameComponent.css';
 import { questions } from '@/Components/common/GameComponent/questions';
@@ -6,18 +6,19 @@ import useCheckbox from '@/Components/hooks/useCheckbox';
 import ButtonComponent from '@/Components/common/ButtonComponent/ButtonComponent';
 import ModalComponent from '@/Components/common/ModalComponent/ModalComponent';
 import { CloseCircleOutlined } from '@ant-design/icons';
-import GameCard from "@/Components/common/GameCard/GameCard";
-import usePagination from "@/Components/hooks/usePagination";
+import GameCard from '@/Components/common/GameCard/GameCard';
+import usePagination from '@/Components/hooks/usePagination';
 
-const GameComponent = () => {
+const GameComponent:FC = () => {
     const initialState = Array(questions.length).fill(null);
     const [selectedAnswers, handleAnswerChange, correctAnswersCount, setSelectedAnswers] = useCheckbox(initialState, questions);
+    const { currentPage, pageSize, handlePageChange } = usePagination(questions.length);
     const [finished, setFinished] = useState(false);
     const [resultModal, setResultModal] = useState(true);
 
-    const { currentPage, pageSize, handlePageChange } = usePagination(questions.length);
     const startQuestionIndex = (currentPage - 1) * pageSize;
     const displayedQuestions = questions.slice(startQuestionIndex, startQuestionIndex + pageSize);
+
 
     const result = () => {
         if (correctAnswersCount <= 4) {
@@ -38,8 +39,8 @@ const GameComponent = () => {
     };
 
     return (
-        <div className="game">
-            <Space direction="vertical" align="center" size="large" className="game__container">
+        <div className='game'>
+            <Space direction='vertical' align='center' size='large' className='game__container'>
                 {displayedQuestions.map((quest, questionIndex) => {
                     const questionGlobalIndex = startQuestionIndex + questionIndex;
 
@@ -63,7 +64,7 @@ const GameComponent = () => {
                     pageSize={pageSize}
                     onChange={handlePageChange}
                 />
-                <Space size={"large"}>
+                <Space size={'large'}>
                     <ButtonComponent onClick={() => setFinished(true)} text={'Закончить'} />
                     <ButtonComponent onClick={restartGame} text={'Ещё раз'}/>
                 </Space>
