@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-const useCheckboxGroup = (initialState) => {
+const useCheckbox = (initialState, questions) => {
     const [selectedAnswers, setSelectedAnswers] = useState(initialState);
 
     const handleAnswerChange = (questionIndex, variantIndex) => {
@@ -11,7 +11,12 @@ const useCheckboxGroup = (initialState) => {
         });
     };
 
-    return [selectedAnswers, handleAnswerChange];
+    const correctAnswersCount = selectedAnswers.filter((answer, questionIndex) => {
+        const question = questions[questionIndex];
+        return question && answer === question.correct;
+    }).length;
+
+    return [selectedAnswers, handleAnswerChange, correctAnswersCount, setSelectedAnswers];
 };
 
-export default useCheckboxGroup;
+export default useCheckbox;

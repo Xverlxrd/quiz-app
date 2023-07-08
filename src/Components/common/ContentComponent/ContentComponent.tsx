@@ -9,7 +9,6 @@ const ContentComponent = ({setStartQuiz}) => {
         <Content className={'content'}>
             <Space size={'large'} className={'content__container'}>
                 <ButtonComponent onClick={() => setStartQuiz(true)} text={'Начать'}/>
-                <ButtonComponent text={'Рекорд'}/>
             </Space>
         </Content>
     );

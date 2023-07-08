@@ -1,57 +1,57 @@
 export interface Question {
     title: string;
     variants: string[];
-    correct: number;
+    correct: string;
 }
 export const questions: Question[]  = [
     {
         title: "React - это ... ?",
         variants: ["библиотека", "фреймворк", "язык программирования"],
-        correct: 0
+        correct: 'библиотека'
     },
     {
         title: "Что такое JSX?",
         variants: ["JavaScript XML", "Java Syntax Extension", "JavaScript eXtension"],
-        correct: 0
+        correct: 'JavaScript XML'
     },
     {
         title: "Как создать компонент в React?",
         variants: ["createComponent()", "createElement()", "makeComponent()"],
-        correct: 1
+        correct: 'createElement()'
     },
     {
         title: "Что такое state в React?",
         variants: ["Внешнее состояние компонента", "Глобальное состояние приложения", "Локальное состояние компонента"],
-        correct: 2
+        correct: 'Локальное состояние компонента'
     },
     {
         title: "Какой метод жизненного цикла React-компонента вызывается при монтировании компонента?",
         variants: ["componentDidMount()", "componentWillMount()", "rendered()"],
-        correct: 0
+        correct: 'componentDidMount()'
     },
     {
         title: "Что такое props в React?",
         variants: ["Внутренние свойства компонента", "Атрибуты компонента", "Методы компонента"],
-        correct: 1
+        correct: 'Атрибуты компонента'
     },
     {
         title: "Каким образом можно обновить состояние компонента в React?",
         variants: ["setState()", "updateState()", "changeState()"],
-        correct: 0
+        correct: 'setState()'
     },
     {
         title: "Что такое React Router?",
         variants: ["Библиотека для управления маршрутизацией в React", "Фреймворк для разработки мобильных приложений", "Инструмент для статической типизации кода"],
-        correct: 0
+        correct: 'Библиотека для управления маршрутизацией в React'
     },
     {
         title: "Что такое React Hooks?",
         variants: ["Способ расширения возможностей React", "Устаревшая функциональность React", "Стандартные компоненты React"],
-        correct: 0
+        correct: 'Способ расширения возможностей React'
     },
     {
         title: "Какой метод жизненного цикла React-компонента вызывается перед удалением компонента?",
         variants: ["componentWillUnmount()", "componentDidUnmount()", "removeComponent()"],
-        correct: 0
+        correct: 'componentWillUnmount()'
     }
 ]

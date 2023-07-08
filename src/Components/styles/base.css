@@ -3,8 +3,8 @@
     height: 100%;
 }
 body{
-    height: 100vh;
-    overflow: hidden;
+    height: 100%;
+    background-color: teal;
 }
 * {
     padding: 0px;
@@ -90,5 +90,4 @@ button::-moz-focus-inner {
 label {
     cursor: pointer;
 }
-
 

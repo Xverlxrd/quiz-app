@@ -16,7 +16,7 @@ const GameCard:FC<GameCardProps> = ({ title, disabled, correct, variants, value,
             />
             {disabled && (
                 <div>
-                    Правильный ответ {variants[correct]}
+                    Правильный ответ {correct}
                 </div>
             )}
         </Space>
