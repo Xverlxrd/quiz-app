@@ -1,0 +1,21 @@
+.game{
+    height: 100vh;
+    display: flex;
+    background-color: teal;
+
+}
+.game__container{
+    padding-top: 20px;
+    margin: 0 auto;
+    width: 1440px;
+    height: 100%;
+}
+.result{
+    width: 300px;
+    height: 200px;
+    position: relative;
+}
+.result__img{
+    position: absolute;
+    right: 2px;
+}

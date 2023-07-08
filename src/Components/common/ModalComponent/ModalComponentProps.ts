@@ -1,5 +1,5 @@
 export interface ModalComponentProps {
     active: boolean
-    setActive: void
+    setActive: any
     children: any
 }
