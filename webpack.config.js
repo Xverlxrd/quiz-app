@@ -36,7 +36,7 @@ module.exports = {
         }
     },
     devServer: {
-        port: 1337,
+        port: 3000,
         hot: isDev
     },
 
