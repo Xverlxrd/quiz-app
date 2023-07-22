@@ -2,7 +2,9 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import '@/Components/redux/actions/authActions.js'
 import ButtonComponent from '@/Components/common/ButtonComponent/ButtonComponent';
-import {login} from "@/Components/redux/actions/authActions";
+import {login, registration} from "@/Components/redux/actions/authActions";
+import './LoginComponent.css'
+import InputComponent from "@/Components/common/InputComponent/InputComponent";
 
 const LoginComponent = () => {
     const [email, setEmail] = useState<string>('');
@@ -10,27 +12,41 @@ const LoginComponent = () => {
 
     const dispatch = useDispatch();
 
-    const handleAuthClick = () => {
+
+    const handleAuth = () => {
         dispatch(login(email, password));
+        setEmail('')
+        setPassword('')
     };
+    const handleRegistration = () => {
+        dispatch(registration(email, password))
+        setEmail('')
+        setPassword('')
+    }
+
 
     return (
-        <div>
-            <input
-                type="email"
-                placeholder="zxc@mail.ru"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-            />
-            <input
-                type="password"
-                placeholder="******"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
-            />
-            <ButtonComponent text={'Auth'} onClick={handleAuthClick} />
-            <ButtonComponent text={'Reg'} />
-        </div>
+        <form className='form__container'>
+            <div className='form__inputs_container'>
+                <InputComponent
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    label='Почта'
+                />
+                <InputComponent
+                    type="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    label='Пароль'
+                />
+            </div>
+
+            <div className="form__btns_container">
+                <ButtonComponent text={'Вход'} onClick={handleAuth} />
+                <ButtonComponent text={'Регистрация'} onClick={handleRegistration} />
+            </div>
+        </form>
     );
 };
 

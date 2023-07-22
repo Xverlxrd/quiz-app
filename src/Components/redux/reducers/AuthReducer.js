@@ -1,17 +1,21 @@
-// authReducer.js
-import { SET_AUTH, SET_USER } from '../actions/actionsTypes/actionsTypes';
+import { SET_AUTH, SET_LOAD, SET_USER } from '../actions/actionsTypes/actionsTypes';
+
 
 const initialState = {
     user: {},
-    isAuth: false,
+    isAuth: localStorage.getItem('isAuth') === 'true',
+    isLoading: false
 };
 
 const authReducer = (state = initialState, action) => {
     switch (action.type) {
         case SET_AUTH:
-            return { ...state, isAuth: action.payload };
+            localStorage.setItem('isAuth', action.payload);
+            return {...state, isAuth: action.payload};
         case SET_USER:
-            return { ...state, user: action.payload };
+            return {...state, user: action.payload};
+        case SET_LOAD:
+            return {...state, isLoading: action.payload}
         default:
             return state;
     }

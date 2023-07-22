@@ -1,0 +1,21 @@
+.input__container{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+.input__label{
+    font-size: 20px;
+    text-transform: capitalize;
+    font-weight: 600;
+}
+.myinput{
+    border-radius: 3px;
+    border: 1px solid black;
+    width: 300px;
+    height: 30px;
+    padding-left: 10px;
+    font-size: 16px;
+}
+.myinput:focus{
+    border: 1px solid dodgerblue;
+}

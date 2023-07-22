@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, {FC, useEffect, useState} from 'react';
 import { Space, Pagination } from 'antd';
 import './GameComponent.css';
 import { questions } from '@/Components/common/GameComponent/questions';
@@ -8,9 +8,18 @@ import ModalComponent from '@/Components/common/ModalComponent/ModalComponent';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import GameCard from '@/Components/common/GameCard/GameCard';
 import usePagination from '@/Components/hooks/usePagination';
+import useTimer from "@/Components/hooks/useTimer";
 
 const GameComponent:FC = () => {
     const initialState = Array(questions.length).fill(null);
+
+    const onDone = () => {
+        setFinished(true)
+        console.log('Timer done')
+    }
+
+    const {time, reset} = useTimer(onDone,2)
+
     const [selectedAnswers, handleAnswerChange, correctAnswersCount, setSelectedAnswers] = useCheckbox(initialState, questions);
     const { currentPage, pageSize, handlePageChange } = usePagination(questions.length);
     const [finished, setFinished] = useState(false);
@@ -18,6 +27,8 @@ const GameComponent:FC = () => {
 
     const startQuestionIndex = (currentPage - 1) * pageSize;
     const displayedQuestions = questions.slice(startQuestionIndex, startQuestionIndex + pageSize);
+
+
 
 
     const result = () => {
@@ -36,7 +47,10 @@ const GameComponent:FC = () => {
         setSelectedAnswers(initialState);
         setFinished(false);
         setResultModal(true);
+        reset()
     };
+
+
 
     return (
         <div className='game'>
@@ -45,17 +59,19 @@ const GameComponent:FC = () => {
                     const questionGlobalIndex = startQuestionIndex + questionIndex;
 
                     return (
-                        <GameCard
-                            correct={quest.correct}
-                            key={quest.title}
-                            title={quest.title}
-                            variants={quest.variants}
-                            value={selectedAnswers[questionGlobalIndex]}
-                            onChange={(selectedOptions) =>
-                                handleAnswerChange(questionGlobalIndex, selectedOptions[0])
-                            }
-                            disabled={finished}
-                        />
+                        <div key={quest.title} >
+                            <GameCard
+                                correct={quest.correct}
+                                title={quest.title}
+                                variants={quest.variants}
+                                value={selectedAnswers[questionGlobalIndex]}
+                                onChange={(selectedOptions) =>
+                                    handleAnswerChange(questionGlobalIndex, selectedOptions[0])
+                                }
+                                disabled={finished}
+                            />
+                            <div>{time}</div>
+                        </div>
                     );
                 })}
                 <Pagination
@@ -66,7 +82,7 @@ const GameComponent:FC = () => {
                 />
                 <Space size={'large'}>
                     <ButtonComponent onClick={() => setFinished(true)} text={'Закончить'} />
-                    <ButtonComponent onClick={restartGame} text={'Ещё раз'}/>
+                    <ButtonComponent disabled={!finished} onClick={restartGame} text={'Ещё раз'}/>
                 </Space>
                 {finished && (
                     <ModalComponent active={resultModal} setActive={setResultModal}>
