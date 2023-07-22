@@ -5,7 +5,7 @@ import { ButtonComponentProps } from '@/Components/common/ButtonComponent/Button
 
 const ButtonComponent:FC<ButtonComponentProps> = ({text, onClick, disabled}) => {
     return (
-        <Button onClick={onClick} disabled={disabled} className={'custom__button'}>
+        <Button onClick={onClick} disabled={disabled} className='custom__button'>
             {text}
         </Button>
     );

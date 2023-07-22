@@ -1,7 +1,7 @@
 import { SET_AUTH, SET_LOAD, SET_USER } from './actionsTypes/actionsTypes';
-import Auth from "@/Service/Auth";
-import axios from "axios";
-import { URL_API } from "@/http/axios";
+import Auth from '@/Service/Auth';
+import axios from 'axios';
+import { URL_API } from '@/http/axios';
 
 export const setAuth = (bool) => ({
     type: SET_AUTH,
@@ -18,7 +18,7 @@ export const isLoading = (load) => ({
     payload: load
 })
 
-export const login = (email, password) => async (dispatch) => {
+export const login:any = (email, password) => async (dispatch) => {
     try {
         const res = await Auth.login(email, password);
         localStorage.setItem('token', res.data.accessToken);
@@ -29,7 +29,7 @@ export const login = (email, password) => async (dispatch) => {
     }
 };
 
-export const registration = (email, password) => async (dispatch) => {
+export const registration:any = (email, password) => async (dispatch) => {
     try {
         const res = await Auth.registration(email, password);
         localStorage.setItem('token', res.data.accessToken);
@@ -40,7 +40,7 @@ export const registration = (email, password) => async (dispatch) => {
     }
 };
 
-export const logout = () => async (dispatch) => {
+export const logout:any = () => async (dispatch) => {
     try {
         const res = await Auth.logout();
         localStorage.removeItem('token');
@@ -51,7 +51,7 @@ export const logout = () => async (dispatch) => {
     }
 };
 
-export const authUser = () => async (dispatch) => {
+export const authUser:any = () => async (dispatch) => {
     try {
         dispatch(isLoading(true))
         const res = await axios.get(`${URL_API}/refresh`, {withCredentials: true})

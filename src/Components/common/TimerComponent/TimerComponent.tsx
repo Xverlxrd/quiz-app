@@ -1,11 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, { FC } from 'react';
+import './TimerComponent.css'
+interface TimerProps {
+    time: number
+}
 
-const TimerComponent = () => {
+const TimerComponent:FC<TimerProps> = ({time}) => {
 
 
     return (
-        <div>
-            6
+        <div className={'timer'}>
+            <span>{Math.floor(time / 60)}</span>
+            <span>
+                    {time % 60 < 10 ? `:0${time % 60}` : `:${time % 60}`}
+                  </span>
         </div>
     );
 };

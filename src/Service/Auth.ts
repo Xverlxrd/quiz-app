@@ -1,6 +1,6 @@
-import api from "@/http/axios";
-import {AxiosResponse} from 'axios'
-import {AuthRes} from "@/models/AuthRes/AuthRes";
+import api from '@/http/axios';
+import { AxiosResponse } from 'axios'
+import { AuthRes } from '@/models/AuthRes/AuthRes';
 
 export default class Auth {
     static async login(email: string, password: string): Promise<AxiosResponse<AuthRes>> {

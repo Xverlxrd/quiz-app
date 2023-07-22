@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 
 const UseTimer = (onDone, initialTime) => {
     const [time, setTime] = useState(initialTime)
@@ -10,6 +10,7 @@ const UseTimer = (onDone, initialTime) => {
 
     const reset = () => {
         setTime(initialTime)
+        clearTimeout(timeId)
     }
 
     const runTimer = () => {

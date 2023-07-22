@@ -9,6 +9,7 @@
     margin: 0 auto;
     width: 1440px;
     height: 100%;
+    position: relative;
 }
 .result{
     width: 300px;

@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import '@/Components/redux/actions/authActions.js'
+import '@/Components/redux/actions/authActions'
 import ButtonComponent from '@/Components/common/ButtonComponent/ButtonComponent';
-import {login, registration} from "@/Components/redux/actions/authActions";
+import { login, registration } from '@/Components/redux/actions/authActions';
 import './LoginComponent.css'
-import InputComponent from "@/Components/common/InputComponent/InputComponent";
+import InputComponent from '@/Components/common/InputComponent/InputComponent';
 
 const LoginComponent = () => {
     const [email, setEmail] = useState<string>('');
@@ -29,22 +29,22 @@ const LoginComponent = () => {
         <form className='form__container'>
             <div className='form__inputs_container'>
                 <InputComponent
-                    type="email"
+                    type='email'
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     label='Почта'
                 />
                 <InputComponent
-                    type="password"
+                    type='password'
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     label='Пароль'
                 />
             </div>
 
-            <div className="form__btns_container">
-                <ButtonComponent text={'Вход'} onClick={handleAuth} />
-                <ButtonComponent text={'Регистрация'} onClick={handleRegistration} />
+            <div className='form__btns_container'>
+                <ButtonComponent text='Вход' onClick={handleAuth} />
+                <ButtonComponent text='Регистрация' onClick={handleRegistration} />
             </div>
         </form>
     );

@@ -3,11 +3,11 @@ import {Layout} from 'antd';
 import HeaderComponent from '@/Components/common/HeaderComponent/HeaderComponent';
 import ContentComponent from '@/Components/common/ContentComponent/ContentComponent';
 import GameComponent from '@/Components/common/GameComponent/GameComponent';
-import LoginComponent from "@/Components/common/LoginComponent/LoginComponent";
-import {useDispatch, useSelector} from "react-redux";
-import {authUser, logout} from "@/Components/redux/actions/authActions";
-import ButtonComponent from "@/Components/common/ButtonComponent/ButtonComponent";
-import ModalComponent from "@/Components/common/ModalComponent/ModalComponent";
+import LoginComponent from '@/Components/common/LoginComponent/LoginComponent';
+import {useDispatch, useSelector} from 'react-redux';
+import {authUser, logout} from '@/Components/redux/actions/authActions';
+import ButtonComponent from '@/Components/common/ButtonComponent/ButtonComponent';
+import ModalComponent from '@/Components/common/ModalComponent/ModalComponent';
 import '@/Components/styles/App.css'
 
 interface RootState {

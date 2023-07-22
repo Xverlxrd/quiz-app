@@ -8,17 +8,22 @@ import ModalComponent from '@/Components/common/ModalComponent/ModalComponent';
 import { CloseCircleOutlined } from '@ant-design/icons';
 import GameCard from '@/Components/common/GameCard/GameCard';
 import usePagination from '@/Components/hooks/usePagination';
-import useTimer from "@/Components/hooks/useTimer";
+import useTimer from '@/Components/hooks/useTimer';
+import TimerComponent from '@/Components/common/TimerComponent/TimerComponent';
+
+
 
 const GameComponent:FC = () => {
+
     const initialState = Array(questions.length).fill(null);
+
 
     const onDone = () => {
         setFinished(true)
         console.log('Timer done')
     }
-
-    const {time, reset} = useTimer(onDone,2)
+    const {time, reset} = useTimer(onDone,300)
+    const [showTimer, setShowTimer] = useState(true)
 
     const [selectedAnswers, handleAnswerChange, correctAnswersCount, setSelectedAnswers] = useCheckbox(initialState, questions);
     const { currentPage, pageSize, handlePageChange } = usePagination(questions.length);
@@ -41,15 +46,22 @@ const GameComponent:FC = () => {
         } else {
             return null;
         }
+
     };
 
     const restartGame = () => {
+        setShowTimer(true)
         setSelectedAnswers(initialState);
         setFinished(false);
         setResultModal(true);
         reset()
     };
 
+    useEffect(() => {
+        if (finished) {
+            setShowTimer(false);
+        }
+    }, [finished]);
 
 
     return (
@@ -70,7 +82,9 @@ const GameComponent:FC = () => {
                                 }
                                 disabled={finished}
                             />
-                            <div>{time}</div>
+                            {showTimer && (
+                                <TimerComponent time={time}/>
+                            )}
                         </div>
                     );
                 })}
@@ -81,14 +95,14 @@ const GameComponent:FC = () => {
                     onChange={handlePageChange}
                 />
                 <Space size={'large'}>
-                    <ButtonComponent onClick={() => setFinished(true)} text={'Закончить'} />
-                    <ButtonComponent disabled={!finished} onClick={restartGame} text={'Ещё раз'}/>
+                    <ButtonComponent onClick={setFinished} text='Закончить' />
+                    <ButtonComponent disabled={!finished} onClick={restartGame} text='Ещё раз'/>
                 </Space>
                 {finished && (
                     <ModalComponent active={resultModal} setActive={setResultModal}>
-                        <div className={'result'}>
+                        <div className='result'>
                             <CloseCircleOutlined
-                                className={'result__img'}
+                                className='result__img'
                                 onClick={() => setResultModal(false)}
                             />
                             <div>

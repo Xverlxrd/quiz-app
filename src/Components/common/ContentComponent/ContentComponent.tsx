@@ -7,9 +7,9 @@ import {ContentComponentProps} from "@/Components/common/ContentComponent/Conten
 
 const ContentComponent:FC<ContentComponentProps> = ({setStartQuiz}) => {
     return (
-        <Content className={'content'}>
-            <Space size={'large'} className={'content__container'}>
-                <ButtonComponent onClick={() => setStartQuiz(true)} text={'Начать'}/>
+        <Content className='content'>
+            <Space size='large' className='content__container'>
+                <ButtonComponent onClick={() => setStartQuiz(true)} text='Начать'/>
             </Space>
         </Content>
     );
