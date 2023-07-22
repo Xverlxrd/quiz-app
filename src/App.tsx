@@ -1,5 +1,5 @@
 import React, {FC, useEffect, useState} from 'react';
-import {Layout} from 'antd';
+import {Layout, Spin} from 'antd';
 import HeaderComponent from '@/Components/common/HeaderComponent/HeaderComponent';
 import ContentComponent from '@/Components/common/ContentComponent/ContentComponent';
 import GameComponent from '@/Components/common/GameComponent/GameComponent';
@@ -9,6 +9,7 @@ import {authUser, logout} from '@/Components/redux/actions/authActions';
 import ButtonComponent from '@/Components/common/ButtonComponent/ButtonComponent';
 import ModalComponent from '@/Components/common/ModalComponent/ModalComponent';
 import '@/Components/styles/App.css'
+import {Icon} from "@iconify/react";
 
 interface RootState {
     auth: {
@@ -52,22 +53,28 @@ const App: FC = () => {
     }
     return (
         <Layout>
-            <HeaderComponent/>
-                {isAuth ? (
-                    <>
-                        <ContentComponent setStartQuiz={setStartQuiz}/>
-                        <div className='logout'>
-                            <ButtonComponent onClick={handleLogout} text='Выйти'/>
+            {!isLoad ? (
+                <>
+                    <HeaderComponent/>
+                    {isAuth ? (
+                        <>
+                            <ContentComponent setStartQuiz={setStartQuiz}/>
+                            <div className='logout'>
+                                <ButtonComponent onClick={handleLogout} text='Выйти'/>
+                            </div>
+                        </>
+                    ) : (
+                        <div className='container__main'>
+                            <ButtonComponent onClick={setLoginModal} text='Войти'/>
+                            <ModalComponent active={loginModal} setActive={setLoginModal}>
+                                <LoginComponent/>
+                            </ModalComponent>
                         </div>
-                    </>
-                ) : (
-                    <div className='container__main'>
-                        <ButtonComponent onClick={setLoginModal} text='Войти'/>
-                        <ModalComponent active={loginModal} setActive={setLoginModal}>
-                            <LoginComponent/>
-                        </ModalComponent>
-                    </div>
-                )}
+                    )}
+                </>
+            ) : (
+                <Icon className='load__img' icon='mdi:react' color='#00d8ff'/>
+            )}
         </Layout>
     );
 };

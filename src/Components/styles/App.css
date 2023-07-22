@@ -1,4 +1,4 @@
-.container__main{
+.container__main {
     margin: 0 auto;
     width: 100%;
     display: flex;
@@ -7,9 +7,29 @@
     align-items: center;
     background-color: teal;
 }
-.logout{
+
+.logout {
     position: absolute;
     align-self: end;
     top: 7px;
     right: 10px;
 }
+
+.load__img {
+    width: 200px;
+    height: 200px;
+    position: absolute;
+    align-self: center;
+    top: 40%;
+    animation: load-spin infinite 1s linear;
+}
+
+@keyframes load-spin {
+    from {
+        transform: rotate(0deg);
+    }
+    to {
+        transform: rotate(360deg);
+    }
+}
+
